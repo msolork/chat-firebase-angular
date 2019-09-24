@@ -1,0 +1,16 @@
+<div class="container main-container">
+
+  <h1>FireChat</h1>
+
+  
+
+  <app-login *ngIf="!_chat.usuario.uid"></app-login>	
+
+  <div class="chat-window"
+		*ngIf="_chat.usuario.uid">
+    
+    <app-chat></app-chat>
+  
+  </div>
+
+</div>

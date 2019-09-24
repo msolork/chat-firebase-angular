@@ -1,0 +1,36 @@
+<h1 class="d-inline" >Chat</h1>
+
+<div class="d-inline p-2 "
+        *ngIf="_chat.usuario.uid">
+    <button type="button" class="m-2 float-right btn btn-outline-danger"
+                (click)="_chat.logout()">
+        
+        Salir
+    </button>
+</div>
+
+<hr>
+
+<div id="app-mensajes" class="mensajes app-mensajes">
+
+    <div    *ngFor="let chat of _chat.chats"
+            [ngClass]="{'text-right': _chat.usuario.uid == chat.uid}">
+
+        <span class="badge badge-primary"
+                [ngClass]="{'badge-primary': _chat.usuario.uid == chat.uid,
+                            'badge-success': _chat.usuario.uid != chat.uid}">
+            {{ _chat.usuario.nombre }}
+        </span>
+        <p>
+            {{ chat.mensaje }}
+        </p>
+    </div>
+
+
+</div>
+
+<input  type="text" name="mensaje" class="mt-1 form-control" 
+        [(ngModel)]="mensaje" 
+        (keyup.enter)="enviarMensaje()" 
+        placeholder="Enviar mensaje">
+
